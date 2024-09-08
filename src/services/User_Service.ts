@@ -206,18 +206,15 @@ class UserService {
       return new Error("User is locked");
     }
     
-    const isMatch = await bcrypt.compare(
-      password,
-      user.password_hash
-    );
+    const isMatch = await bcrypt.compare(password, user.password_hash);
     if (!isMatch) {
       user.login_attempts += 1;
       if (user.login_attempts >= 5) {
         user.is_locked = true;
         user.unlock_timestamp = new Date(Date.now() + 5 * 60 * 1000);
-        await user.save();
-        return new Error("Invalid password");
       }
+      await user.save();
+      return new Error("Invalid password");
     }
 
     user.login_attempts = 0;

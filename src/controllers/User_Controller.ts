@@ -159,21 +159,117 @@ export class UserController {
     }
   };
 
-  static findLockedUserById;
+  static findLockedUserById = async (
+    req: Request, res: Response
+  ) => {
+    const userId = req.params.userId;
+    try {
+      if (!userId) throw new Error("UserId is empty");
+      const result = await UserService.findLockedUserById(userId);
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error fetching locked user from userId: ${new Object(error).toString()}` });
+    }
+  };
 
-  static findLockedUserByUsername;
+  static findLockedUserByUsername = async (
+    req: Request, res: Response
+  ) => {
+    const username = req.params.username;
+    try {
+      if (!username) throw new Error("Username is empty");
+      const result = await UserService.findLockedUserById(username);
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error fetching locked user from username: ${new Object(error).toString()}` });
+    }
+  };
 
-  static findAllUsers;
+  static findAllUsers = async (
+    req: Request, res: Response
+  ) => {
+    try {
+      const result = await UserService.findAllUsers();
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error fetching users: ${new Object(error).toString()}` });
+    }
+  };
   
-  static findAllUserById;
+  static findAllUserById = async (
+    req: Request, res: Response
+  ) => {
+    const userId = req.params.userId;
+    try {
+      if (!userId) throw new Error("UserId is empty");
+      const result = await UserService.findAllUserById(userId);
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error fetching user from userId: ${new Object(error).toString()}` });
+    }
+  };;
 
-  static findAllUserByUsername;
+  static findAllUserByUsername = async (
+    req: Request, res: Response
+  ) => {
+    const username = req.params.username;
+    try {
+      if (!username) throw new Error("Username is empty");
+      const result = await UserService.findAllUserByUsername(username);
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error fetching user from username: ${new Object(error).toString()}` });
+    }
+  };;
 
-  static lockUser;
+  static lockUser = async (
+    req: Request, res: Response
+  ) => {
+    const { userId, lockDurationMilliseconds } = req.body;
+    try {
+      if (!userId || !lockDurationMilliseconds) throw new Error(`Data is empty: ${ new Object(req.body).toString() }`)
+      const result = await UserService.lockUser(userId, lockDurationMilliseconds);
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error locking user: ${new Object(error).toString()}` });
+    }
+  };
 
-  static unlockUser;
+  static unlockUser = async (
+    req: Request, res: Response
+  ) => {
+    const { userId } = req.params;
+    try {
+      if (!userId) throw new Error("UserId is empty");
+      const result = await UserService.unlockUser(userId);
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error unlocking user: ${new Object(error).toString()}` });
+    }
+  };
 
-  static updatePassword;
+  static updatePassword = async (
+    req: Request, res: Response
+  ) => {
+    const {
+      userId, oldPassword, newPassword
+    } = req.body;
+    try {
+      if (!userId || !oldPassword || !newPassword) throw new Error(`Data is empty: ${new Object(req.body).toString()}`);
+      const result = await UserService.updatePassword(userId, {oldPassword, newPassword});
+      if (result instanceof Error) throw result;
+      else res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: `Error updating user password: ${new Object(error).toString()}` });
+    }
+  };
 }
 
 export default UserController;
