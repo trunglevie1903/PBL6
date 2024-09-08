@@ -1,0 +1,83 @@
+- download vscode system installer, install vscode
+- download and install npm
+- open folder for the script
+- cmd line: npm init -y
+- cmd line: npm i -S express | npm i -D typescript @types/node @types/express ts-node nodemon
+- cmd line: npx tsc --init
+- update file "tsconfig.json":
+{
+"compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true
+},
+"include": ["src/**/*.ts"],
+"exclude": ["node_modules"]
+}
+- create file with path "src/index.ts", copy this code:
+import express, { Request, Response } from 'express';
+
+const app = express();
+const PORT = 3000;
+
+// Basic route
+app.get('/', (req: Request, res: Response) => {
+res.send('Hello, TypeScript with Express!');
+});
+
+// Start the server
+app.listen(PORT, () => {
+console.log(`Server running at http://localhost:${PORT}`);
+});
+- create "nodemon.json":
+{
+"watch": ["src"],
+"ext": "ts",
+"exec": "ts-node ./src/index.ts"
+}
+- edit "package.json":
+"scripts": {
+"start": "nodemon"
+}
+- cmd line: npm i -S sequelize mysql2 jsonwebtoken bcrypt | npm i -D @types/jsonwebtoken @types/bcrypt @types/sequelize
+- download and install mysql, using this credential: "root" - "12345678"
+- download and install postman for API checking
+- cmd line: npm i -S dotenv | npm i -D @types/dotenv
+- create ".env" file, for example:
+# .env
+PORT=4000
+DATABASE_URL=mongodb://localhost:27017/myapp
+JWT_SECRET=mysecretkey
+- create file "src/config.ts" with this content:
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Load the environment variables from the .env file
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
+interface Config {
+  port: string | number;
+  databaseUrl: string;
+  jwtSecret: string;
+}
+
+// Define the config object and export it
+export const config: Config = {
+  port: process.env.PORT || 3000,
+  databaseUrl: process.env.DATABASE_URL || '',
+  jwtSecret: process.env.JWT_SECRET || 'defaultsecret',
+};
+
+- add these line into "src/index.ts":
+<...>
+# import config from .env file
+import { config } from './config';
+<...>
+# extract data from config to use
+const PORT = config.PORT;
+- create ".gitignore" file, add ".env" into it
+- add more property to an interface:
+https://github.com/3mard/ts-node-example/tree/master
+- model associations in sequelize v6 with typescript: https://sequelize.org/docs/v6/other-topics/typescript
