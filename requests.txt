@@ -1,0 +1,50 @@
+---V1---
+
+User:
+  registerUser
+  loginUser
+  logoutUser
+  refreshToken
+  lockUser
+  unlockUser
+  findUsers
+  findUserById
+  findUserByUsername
+  findUserByEmail
+  findLockedUsers
+  findLockedUserById
+  findLockedUserByUsername
+  findLockedUserByEmail
+  findAllUsers
+  findAllUserById
+  findAllUserByUsername
+  findAllUserByEmail
+  updateUser
+  updatePassword
+
+UserProfile:
+  createProfile
+  updateProfile
+  findProfileById
+
+Video:
+  findRandomVideos
+  findVideoById
+  findVideoByTitle
+  findVideoByCreatorId
+  uploadVideo
+  updateVideo
+  deleteVideo
+
+Video with AI:
+  getVideoSummary (via transcript, also generate by AI server)
+
+WatchHistory:
+  watchVideo
+  findVideoWatchCount
+  findUserWatchedVideo
+
+LikeHistory:
+  likeVideo
+  findVideoLikeCount
+  findUserLikedVideo
