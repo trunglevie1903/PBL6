@@ -84,7 +84,9 @@
 
 import { DataTypes as DT, Model, Optional } from 'sequelize';
 import { sequelize } from '../config/database';
+
 import { UserRole } from './enums/enums';
+import Video from './Video';
 
 interface UserInterface {
   user_id: string;
@@ -176,6 +178,11 @@ User.init({
   sequelize,
   tableName: "User",
   timestamps: true
+});
+
+User.hasMany(Video, {
+  sourceKey: "user_id",
+  foreignKey: "creator_user_id"
 });
 
 export default User;

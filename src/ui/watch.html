@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Video</title>
+</head>
+<body>
+  <h1>Watch Uploaded Video</h1>
+  <video id="videoPlayer" controls>
+    <source src="" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    // Fetch video URL (this can be dynamically passed via a query parameter or a backend call)
+    const videoUrl = new URLSearchParams(window.location.search).get('videoUrl');
+    if (videoUrl) {
+      document.getElementById('videoPlayer').src = videoUrl;
+    } else {
+      document.body.innerHTML = '<p>No video to display.</p>';
+    }
+  </script>
+</body>
+</html>
