@@ -5,7 +5,7 @@ import path from 'path';
 
 import * as User_Route from './routes/User_Route'
 import * as VideoRoute from "./routes/VideoUpload_Route";
-
+import * as videoRoute from "./routes/videoRoutes";
 dotenv.config();
 
 import { config } from './config';
@@ -17,16 +17,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/users', User_Route.default);
 app.use(VideoRoute.default);
+app.use(videoRoute.default);
 
-
-// Serve static HTML files
-app.get('/upload', (req, res) => {
-    res.sendFile(path.join(__dirname, './ui/upload.html'));
-  });
+// // Serve static HTML files
+// app.get('/upload', (req, res) => {
+//     res.sendFile(path.join(__dirname, './ui/upload.html'));
+//   });
   
-app.get('/watch', (req, res) => {
-    res.sendFile(path.join(__dirname, './watch.html'));
-});
+// app.get('/watch', (req, res) => {
+//     res.sendFile(path.join(__dirname, './watch.html'));
+// });
 
 // Server Route for Health check
 app.get('/test', (

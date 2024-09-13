@@ -6,20 +6,18 @@
   <title>Watch Video</title>
 </head>
 <body>
-  <h1>Watch Uploaded Video</h1>
-  <video id="videoPlayer" controls>
-    <source src="" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <h1>Watch Video</h1>
+  <video id="videoPlayer" controls width="600"></video>
 
   <script>
-    // Fetch video URL (this can be dynamically passed via a query parameter or a backend call)
-    const videoUrl = new URLSearchParams(window.location.search).get('videoUrl');
-    if (videoUrl) {
-      document.getElementById('videoPlayer').src = videoUrl;
-    } else {
-      document.body.innerHTML = '<p>No video to display.</p>';
-    }
+    // Get the video file name from the current URL
+    const urlParams = new URLSearchParams(window.location.pathname.split('/').pop());
+    const fileName = window.location.pathname.split('/').pop();
+    
+    // Set the video source dynamically
+    const videoPlayer = document.getElementById('videoPlayer');
+    videoPlayer.src = `/t/video/${fileName}`;
+    console.log(videoPlayer.src);
   </script>
 </body>
 </html>
