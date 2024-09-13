@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Homepage</title>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/g3.css">
+</head>
+<body class="font-sans bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+    <div class="flex items-center justify-between p-4 max-w-screen-xl mx-auto">
+      <button id="menu-toggle" class="text-gray-700 hover:text-gray-900">
+        &#9776;
+      </button>
+      <a href="/" class="text-xl font-bold">Logo</a>
+      <div class="flex-grow mx-4">
+        <form class="flex">
+          <input type="text" placeholder="Search..." class="w-full p-2 border rounded-l-lg">
+          <button type="submit" class="p-2 bg-blue-500 text-white rounded-r-lg">Search</button>
+        </form>
+      </div>
+      <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded">Sign In</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <div class="flex mt-16">
+    <!-- Sidebar Menu -->
+    <nav id="sidebar" class="w-64 bg-white shadow-md h-screen transition-width duration-300">
+      <ul class="flex flex-col p-4 space-y-2">
+        <li><a href="#" class="flex items-center text-gray-700 hover:text-blue-500"><span class="text-xl">&#127968;</span><span class="ml-3 hidden sm:inline">Home</span></a></li>
+        <li><a href="#" class="flex items-center text-gray-700 hover:text-blue-500"><span class="text-xl">&#128293;</span><span class="ml-3 hidden sm:inline">Trending</span></a></li>
+        <li><a href="#" class="flex items-center text-gray-700 hover:text-blue-500"><span class="text-xl">&#127916;</span><span class="ml-3 hidden sm:inline">Subscriptions</span></a></li>
+        <li><a href="#" class="flex items-center text-gray-700 hover:text-blue-500"><span class="text-xl">&#128218;</span><span class="ml-3 hidden sm:inline">Library</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-4">
+      <h1 class="text-3xl font-bold mb-4">Welcome to Guest Homepage</h1>
+      <p>Content will go here...</p>
+    </main>
+  </div>
+
+  <script src="../js/g3.js"></script>
+</body>
+</html>

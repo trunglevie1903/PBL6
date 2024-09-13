@@ -1,0 +1,12 @@
+/* Optional: Additional custom styling if needed */
+#sidebar.collapsed {
+  width: 16rem; /* Adjust width for collapsed state */
+}
+
+#main-content {
+  transition: margin-left 0.3s ease;
+}
+
+#sidebar.collapsed ~ #main-content {
+  margin-left: 16rem; /* Adjust margin when sidebar is collapsed */
+}

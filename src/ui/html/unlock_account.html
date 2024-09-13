@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlock Account</title>
+  <link rel="stylesheet" href="../css/unlock_account.css">
+</head>
+<body>
+
+  <div class="unlock-container">
+    <div class="unlock-box">
+      <h2>Unlock Account</h2>
+
+      <!-- Unlock Form -->
+      <form id="unlockForm">
+        <div class="form-group">
+          <label for="unlockCode">Enter your unlock code</label>
+          <input type="text" id="unlockCode" name="unlockCode" placeholder="Enter code" required>
+        </div>
+
+        <button type="submit" class="unlock-btn">Submit</button>
+      </form>
+
+      <p id="responseMessage"></p>
+    </div>
+  </div>
+
+  <script src="../js/unlock_account.js"></script>
+
+</body>
+</html>
